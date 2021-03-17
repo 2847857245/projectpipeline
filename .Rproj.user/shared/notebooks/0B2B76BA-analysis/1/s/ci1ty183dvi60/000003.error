@@ -1,0 +1,1 @@
+{"frames":[],"message":"Error in my_t.test(x = (my_gapminder$lifeExp), alternative = \"two.sided\",  : \n  没有\"my_t.test\"这个函数\n"}

@@ -1,0 +1,27 @@
+"0","#A tutorial for my_rf_cv using my_penguins."
+"0","library(randomForest)"
+"0","library(dplyr)"
+"0","library(tidyr)"
+"0","library(mltools)"
+"2","Registered S3 method overwritten by 'data.table':
+  method           from
+  print.data.table     
+"
+"2","
+载入程辑包：‘mltools’
+
+"
+"2","The following object is masked from ‘package:tidyr’:
+
+    replace_na
+
+"
+"0","#case when k = 2"
+"0","k_2_cv <- c()"
+"0","k_5_cv <- c()"
+"0","k_10_cv <- c()"
+"0","for(i in 1:30) {"
+"0","  k_2_cv <- append(k_2_cv, my_rf_cv(k = 2))"
+"0","  k_5_cv <- append(k_5_cv, my_rf_cv(k = 5))"
+"0","  k_10_cv <- append(k_10_cv, my_rf_cv(k = 10))"
+"0","}"

@@ -1,0 +1,69 @@
+---
+title: "Project 3: myfirstpackage Tutorial"
+author: "Yu Fang"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{myfirstpackage Tutorial}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+my_penguins <- read.csv("../data/my_penguins.csv")
+source("../code/my_rf_cv.R")
+```
+
+
+```{r}
+#A tutorial for my_rf_cv using my_penguins.
+library(randomForest)
+library(dplyr)
+library(tidyr)
+library(mltools)
+#case when k = 2
+k_2_cv <- c()
+k_5_cv <- c()
+k_10_cv <- c()
+for(i in 1:30) {
+  k_2_cv <- append(k_2_cv, my_rf_cv(k = 2))
+  k_5_cv <- append(k_5_cv, my_rf_cv(k = 5))
+  k_10_cv <- append(k_10_cv, my_rf_cv(k = 10))
+}
+k_2_cv
+k_5_cv
+k_10_cv
+```
+
+```{r}
+library(ggplot2)
+folds <- rep(c(2, 5, 10), each = 30) %>% as.factor()
+total_cv <- c(k_2_cv, k_5_cv, k_10_cv)
+#Draw three boxplots side by side by using ggplot
+ggplot(data = data.frame(total_cv), aes(x = unlist(folds),
+                   y = total_cv,
+                   fill = folds)) +
+        geom_boxplot()
+ggsave(path = "../Output/Figures", filename = "boxplots.jpg")
+```
+
+```{r}
+final_table <- data.frame()
+final_table[1,1] <- mean(k_2_cv)
+final_table[1,2] <- sd(k_2_cv)
+final_table[2,1] <- mean(k_5_cv)
+final_table[2,2] <- sd(k_5_cv)
+final_table[3,1] <- mean(k_10_cv)
+final_table[3,2] <- sd(k_10_cv)
+colnames(final_table) <- c("Mean", "Standard Deviation")
+rownames(final_table) <- c("k=2", "k=5", "k=10")
+saveRDS(final_table, file = "../Output/Results/statistics.rds")
+simulations <- write.csv(c(k_2_cv, k_5_cv, k_10_cv), file = "../Output/Results/simulations.csv")
+```
+We can see from the table and the boxlot, the average and the standard deviation of ev_err become smaller as the value of k gets larger. This is because as the k gets larger, we are going to train our model with more data, so the average cv will be lower

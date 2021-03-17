@@ -1,0 +1,7 @@
+"0","#A tutorial for my_t.test"
+"0","#hypothesis: mean of the lifeExp data from my_gapminder equals to 60"
+"0","#alternative hypothesis: mean of the lifeExp data from my_gapminder does not equal to 60"
+"0","my_t.test(x=(my_gapminder$lifeExp),alternative=""two.sided"",mu = 60)"
+"2","Error in my_t.test(x = (my_gapminder$lifeExp), alternative = ""two.sided"",  : 
+  没有""my_t.test""这个函数
+"

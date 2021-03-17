@@ -1,0 +1,26 @@
+{
+    "id": "9D4721A6",
+    "path": "~/Stat302/projectpipeline/Analysis/analysis.Rmd",
+    "project_path": "Analysis/analysis.Rmd",
+    "type": "r_markdown",
+    "hash": "2247795443",
+    "contents": "",
+    "dirty": false,
+    "created": 1615990400491.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "tempName": "Untitled1",
+        "cursorPosition": "66,78",
+        "scrollLine": "54",
+        "last_setup_crc32": "A730218A5237bf84"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1615993091,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1615993097728,
+    "read_only": false,
+    "read_only_alternatives": []
+}
